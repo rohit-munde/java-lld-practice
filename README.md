@@ -12,7 +12,7 @@ Built as a **Maven Multi-Module Monorepo**, every problem is an independent, ful
 |:---:|:---|:---|:---:|:---:|
 | 1 | **Smart Parking Lot System** | Strategy, Facade, Factory | ✅ Completed | [smart-parking-lot](./smart-parking-lot) |
 | 2 | **Elevator System** | State, Strategy, Observer | 📝 Planned | Upcoming |
-| 3 | **Snake and Ladder** | Strategy, Game Loop, State | 📝 Planned | Upcoming |
+| 3 | **Snake and Ladder** | Strategy, Game Loop, State | ⏳ In Progress | [snake-and-ladder](./snake-and-ladder) |
 | 4 | **Tic Tac Toe** | Strategy, Minimax / Rules Engine | 📝 Planned | Upcoming |
 | 5 | **Rate Limiter (Token Bucket / Leaky Bucket)** | Strategy, Token Bucket, Sliding Window | 📝 Planned | Upcoming |
 | 6 | **In-Memory Cache (LRU / LFU)** | Doubly Linked List + HashMap, Eviction Strategy | 📝 Planned | Upcoming |
@@ -33,7 +33,7 @@ java-lld-practice/
 ├── README.md                                 # Master documentation and problem catalog
 ├── .gitignore
 │
-├── smart-parking-lot/                        # Module 1
+├── smart-parking-lot/                        # Module 1: Smart Parking Lot
 │   ├── pom.xml
 │   ├── README.md
 │   ├── docs/
@@ -48,7 +48,25 @@ java-lld-practice/
 │       └── test/java/
 │           └── ParkingLotTest.java           # Unit tests
 │
-├── <next-problem>/                           # Module 2, 3, ...
+├── snake-and-ladder/                         # Module 2: Snake and Ladder Game
+│   ├── pom.xml
+│   ├── README.md
+│   └── src/
+│       ├── main/java/
+│       │   ├── enums/
+│       │   ├── model/
+│       │   ├── strategy/
+│       │   ├── observer/
+│       │   ├── builder/
+│       │   ├── service/
+│       │   └── Main.java                     # Interactive CLI & auto simulations
+│       └── test/java/
+│           ├── BoardTest.java
+│           ├── DiceTest.java
+│           ├── MovementAndStrategyTest.java
+│           └── SnakeAndLadderGameTest.java
+│
+├── <next-problem>/                           # Module 3, 4, ...
 │   ├── pom.xml
 │   └── src/
 ```
@@ -80,6 +98,9 @@ Run the console application for any module directly using `mvn exec:java`:
 ```bash
 # Run Smart Parking Lot
 mvn exec:java -pl smart-parking-lot
+
+# Run Snake and Ladder
+mvn exec:java -pl snake-and-ladder
 ```
 
 #### Via IntelliJ IDEA:

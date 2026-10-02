@@ -8,12 +8,13 @@ import model.Vehicle;
 import java.time.LocalDateTime;
 
 public class ParkingService {
-
    public static Ticket ParkVehicle(Vehicle vehicle, ParkingLot parkingLot) {
        ParkingSpot availableSpot = SpotAllocationService.FindAvailableSpot(vehicle, parkingLot);
-       availableSpot.setVehicle(vehicle);
-       availableSpot.setAvailable(false);
-       return TicketService.GenerateTicket(vehicle, availableSpot);
+       synchronized (availableSpot) {
+           availableSpot.setVehicle(vehicle);
+           availableSpot.setAvailable(false);
+            return TicketService.GenerateTicket(vehicle, availableSpot);
+       }
    }
 
    public static Ticket UnParkVehicle(Integer ticketId) {
