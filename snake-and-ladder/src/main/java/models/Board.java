@@ -23,6 +23,10 @@ public class Board {
     }
 
     public Cell getCell(int number) {
+        if (number < 1 || number > size) {
+            throw new IllegalArgumentException("Cell number must be between 1 and " + size + ".");
+        }
+
         return cells[number - 1];
     }
 

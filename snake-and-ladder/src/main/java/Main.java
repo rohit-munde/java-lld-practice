@@ -29,8 +29,6 @@ public class Main {
                 new Player("Player 4", "Vandy", new CheatingStrategy())
         ));
 
-//        Dice dice = new Dice(new BiasedRollStrategy(6));
-
         Game game = new Game(board, players);
 
         System.out.println(game);

@@ -22,12 +22,6 @@ public class Game {
         this.status = GameStatus.NOT_STARTED;
     }
 
-    public Game(Board board, Dice dice) {
-        this.board = board;
-        this.players = new ArrayDeque<>();
-        this.status = GameStatus.NOT_STARTED;
-    }
-
     public void addPlayer(Player player) {
         if (player != null) {
             this.players.offer(player);

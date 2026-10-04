@@ -18,6 +18,8 @@ Design a console-based Snake and Ladder board game:
 2. **Dice**:
    - Configurable dice count (1 or more dice, 1–6 faces).
    - Pluggable rolling strategy (fair random vs deterministic/rigged for testing).
+   - Current implementation supports player-specific roll strategies so individual players can behave normally, be biased, or cheat.
+   - If all players should share the same rolling behavior, use the `Dice` model inside `Game` and delegate every turn to the shared dice instead.
 
 3. **Players & Turns**:
    - 2 or more players taking turns in round-robin fashion.
