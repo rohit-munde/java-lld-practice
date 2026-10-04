@@ -6,15 +6,13 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class Game {
-    private Board board;
-//    private Dice dice;
+    private final Board board;
     private GameStatus status;
-    private Queue<Player> players;
+    private final Queue<Player> players;
     private Player winner;
 
     public Game(Board board, Queue<Player> players) {
         this.board = board;
-//        this.dice = dice;
 
         if (players == null || players.size() < 2) {
             throw new IllegalArgumentException("Min 2 players");
@@ -26,7 +24,6 @@ public class Game {
 
     public Game(Board board, Dice dice) {
         this.board = board;
-//        this.dice = dice;
         this.players = new ArrayDeque<>();
         this.status = GameStatus.NOT_STARTED;
     }
@@ -38,14 +35,23 @@ public class Game {
     }
 
     public void start() {
+        if (status != GameStatus.NOT_STARTED) {
+            throw new IllegalStateException("Game has already started.");
+        }
+
         if (players.size() < 2) {
             throw new IllegalArgumentException("Min 2 players required to start the game");
         }
+
         status = GameStatus.IN_PROGRESS;
         System.out.println("Game Started");
     }
 
     public void playTurn() {
+        if (status != GameStatus.IN_PROGRESS) {
+            throw new IllegalStateException("Game is not in progress.");
+        }
+
         Player player = players.poll();
         if (player == null) {
             return;
@@ -81,35 +87,6 @@ public class Game {
         players.offer(player);
     }
 
-    // Getters and Setters
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
-    }
-
-//    public Dice getDice() {
-//        return dice;
-//    }
-//
-//    public void setDice(Dice dice) {
-//        this.dice = dice;
-//    }
-
-    public GameStatus getStatus() {
-        return status;
-    }
-
-    public Queue<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(Queue<Player> players) {
-        this.players = players;
-    }
-
     public Player getWinner() {
         return winner;
     }
@@ -118,7 +95,6 @@ public class Game {
     public  String toString() {
         return "Game{" +
                 "board=" + board +
-//                ", dice=" + dice +
                 ", status=" + status +
                 ", players=" + players +
                 ", winner=" + winner +

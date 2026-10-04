@@ -3,8 +3,8 @@ package models;
 import interfaces.IRollStrategy;
 
 public class Player {
-    private String id;
-    private String name;
+    private final String id;
+    private final String name;
     private int position;
     private IRollStrategy rollStrategy;
 
@@ -15,11 +15,6 @@ public class Player {
         this.rollStrategy = rollStrategy;
     }
 
-    // Getters and Setters
-    public String getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
@@ -28,20 +23,12 @@ public class Player {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
     public void moveTo(int position) {
         this.position = position;
     }
 
     public IRollStrategy getRollStrategy() {
         return rollStrategy;
-    }
-
-    public void setRollStrategy(IRollStrategy rollStrategy) {
-        this.rollStrategy = rollStrategy;
     }
 
     @Override

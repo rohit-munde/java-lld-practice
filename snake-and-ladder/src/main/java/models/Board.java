@@ -4,6 +4,11 @@ public class Board {
     private final Cell[] cells;
     private final int size; // Assuming a 10x10 board
 
+
+    public Board() {
+        this(100);
+    }
+
     public Board(int size) {
         if (size <= 0) {
             throw new IllegalArgumentException("Board size must be positive.");

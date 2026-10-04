@@ -9,14 +9,6 @@ public class Dice {
         this.rollStrategy = rollStrategy;
     }
 
-    public int roll() {
-        return rollStrategy.roll();
-    }
-
-    public int getRollStrategy() {
-        return rollStrategy.roll();
-    }
-
     @Override
     public String toString() {
         return "Dice{" +

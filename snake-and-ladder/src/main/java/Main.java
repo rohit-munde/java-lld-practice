@@ -1,9 +1,6 @@
 import models.*;
 import strategy.BiasedRollStrategy;
 import strategy.CheatingStrategy;
-import strategy.CrookedRollStrategy;
-import strategy.NormalRollStrategy;
-
 import java.util.ArrayDeque;
 import java.util.Queue;
 
