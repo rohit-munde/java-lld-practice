@@ -1,11 +1,11 @@
-package models;
+package strategy;
 
 import interfaces.IRollStrategy;
 
 public class NormalRollStrategy implements IRollStrategy {
 
     @Override
-    public int Roll() {
+    public int roll() {
         return (int)(Math.random() * 6) + 1;
     }
 

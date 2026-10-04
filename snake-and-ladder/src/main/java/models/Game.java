@@ -7,14 +7,14 @@ import java.util.Queue;
 
 public class Game {
     private Board board;
-    private Dice dice;
+//    private Dice dice;
     private GameStatus status;
     private Queue<Player> players;
     private Player winner;
 
-    public Game(Board board, Dice dice, Queue<Player> players) {
+    public Game(Board board, Queue<Player> players) {
         this.board = board;
-        this.dice = dice;
+//        this.dice = dice;
 
         if (players == null || players.size() < 2) {
             throw new IllegalArgumentException("Min 2 players");
@@ -26,7 +26,7 @@ public class Game {
 
     public Game(Board board, Dice dice) {
         this.board = board;
-        this.dice = dice;
+//        this.dice = dice;
         this.players = new ArrayDeque<>();
         this.status = GameStatus.NOT_STARTED;
     }
@@ -37,7 +37,7 @@ public class Game {
         }
     }
 
-    public void Start() {
+    public void start() {
         if (players.size() < 2) {
             throw new IllegalArgumentException("Min 2 players required to start the game");
         }
@@ -45,19 +45,21 @@ public class Game {
         System.out.println("Game Started");
     }
 
-    public void PlayTurn() {
+    public void playTurn() {
         Player player = players.poll();
         if (player == null) {
             return;
         }
 
-        System.out.println(player.getName() + " turn");
+        System.out.println("==>" + player.getName() + " turn");
 
-        int diceValue = dice.Roll();
+        int diceValue = player.getRollStrategy().roll();
 
         System.out.println(diceValue + " Rolled");
 
         int nextPosition = player.getPosition() + diceValue;
+
+        System.out.println("==>" + player.getName() + " is at Position: " + nextPosition);
 
         if (nextPosition > board.getSize()) {
             System.out.println("Invalid Position, Player Cannot Move");
@@ -65,14 +67,14 @@ public class Game {
             return;
         }
 
-        nextPosition = board.ResolvePosition(nextPosition);
+        nextPosition = board.resolvePosition(nextPosition);
 
-        player.MoveTo(nextPosition);
+        player.moveTo(nextPosition);
 
         if (nextPosition == board.getSize()) {
             winner = player;
             status = GameStatus.FINISHED;
-            System.out.println("Player " + player.getName() + " has won the game!");
+            System.out.println("=== Player " + player.getName() + " has won the game! ===");
             return;
         }
 
@@ -88,13 +90,13 @@ public class Game {
         this.board = board;
     }
 
-    public Dice getDice() {
-        return dice;
-    }
-
-    public void setDice(Dice dice) {
-        this.dice = dice;
-    }
+//    public Dice getDice() {
+//        return dice;
+//    }
+//
+//    public void setDice(Dice dice) {
+//        this.dice = dice;
+//    }
 
     public GameStatus getStatus() {
         return status;
@@ -116,7 +118,7 @@ public class Game {
     public  String toString() {
         return "Game{" +
                 "board=" + board +
-                ", dice=" + dice +
+//                ", dice=" + dice +
                 ", status=" + status +
                 ", players=" + players +
                 ", winner=" + winner +

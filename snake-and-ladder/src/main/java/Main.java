@@ -1,4 +1,8 @@
 import models.*;
+import strategy.BiasedRollStrategy;
+import strategy.CheatingStrategy;
+import strategy.CrookedRollStrategy;
+import strategy.NormalRollStrategy;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -8,27 +12,38 @@ public class Main {
         System.out.println("Snake and Ladder Game initialized.");
 
         //Board is initialised with 100 cells and jumps are added to the board.
-        Board board = new Board();
+        Board board = new Board(100);
 
-        board.AddJump(new Jump(2, 38) {});
-        board.AddJump(new Jump(15, 35) {});
-        board.AddJump(new Jump(55, 95) {});
+        //Ladders
+        board.addJump(new Ladder(2, 38));
+        board.addJump(new Ladder(15, 35));
+//        board.addJump(new Ladder(55, 95));
 
-        board.AddJump(new Jump(67, 45) {});
-        board.AddJump(new Jump(75, 38) {});
-        board.AddJump(new Jump(90, 8) {});
+        //Snakes
+        board.addJump(new Snake(67, 45));
+        board.addJump(new Snake(75, 38));
+        board.addJump(new Snake(90, 8));
 
         //set players now
         Queue<Player> players = new ArrayDeque<>(java.util.List.of(
-                new Player("Player 1", "Rohit"),
-                new Player("Player 2", "Vishal")
+                new Player("Player 1", "Rohit", new BiasedRollStrategy(6)),
+                new Player("Player 2", "Vishal", new CheatingStrategy()),
+                new Player("Player 3", "Guru UK wale", new CheatingStrategy()),
+                new Player("Player 4", "Vandy", new CheatingStrategy())
         ));
 
-        Dice dice = new Dice(new NormalRollStrategy());
+//        Dice dice = new Dice(new BiasedRollStrategy(6));
 
-        Game game = new Game(board, dice, players);
+        Game game = new Game(board, players);
 
         System.out.println(game);
 
+        game.start();
+        Player winner = game.getWinner();
+        while (winner == null) {
+            game.playTurn();
+            winner = game.getWinner();
+        }
+        System.out.println("Winner is: " + winner.getName());
     }
 }

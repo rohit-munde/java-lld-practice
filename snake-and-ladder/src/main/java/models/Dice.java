@@ -9,12 +9,12 @@ public class Dice {
         this.rollStrategy = rollStrategy;
     }
 
-    public int Roll() {
-        return rollStrategy.Roll();
+    public int roll() {
+        return rollStrategy.roll();
     }
 
     public int getRollStrategy() {
-        return rollStrategy.Roll();
+        return rollStrategy.roll();
     }
 
     @Override
