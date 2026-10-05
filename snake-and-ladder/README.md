@@ -4,6 +4,70 @@ This module contains a simple Java implementation of the classic Snake and Ladde
 
 The focus is on clean object design: board setup, players, snakes, ladders, turn handling, and dice roll behavior.
 
+## Problem Statement
+
+Basic Board: On a board (Of size 100), for a dice throw a player should move from the initial position by the number on dice throw.
+
+Add a snake on the board: A snake moves a player from its start position to end position. where start position > end position  
+Test data: Add a snake at position 14 moving the player to position 7.
+
+Make A Crooked Dice: A dice that only throws Even numbers. The can game can be started with normal dice or crooked dice.
+
+One more crookedness could be:  
+Biased/Weighted Die: The dice has a higher probability of landing on a specific number (e.g., 6).
+
+## Clarifying With The Interviewer
+
+Before jumping into classes, it is better to clarify the rules. This helps avoid building either too little or too much.
+
+**Candidate:** Should I assume the board size is always 100, or should it be configurable?
+
+**Interviewer:** Start with 100, but keep it configurable if possible.
+
+**Candidate:** Got it. I will create a `Board` with a default size of 100 and also allow `new Board(size)`.
+
+**Candidate:** Can there be multiple players, or should I design it for a single player first?
+
+**Interviewer:** Design it for multiple players.
+
+**Candidate:** I will keep players in a turn queue so they play in round-robin order.
+
+**Candidate:** For snakes and ladders, should I model them separately or as one common concept?
+
+**Interviewer:** They are similar, but their validation is different.
+
+**Candidate:** I will create an abstract `Jump` and extend it with `Snake` and `Ladder`. A snake will validate `start > end`, and a ladder will validate `start < end`.
+
+**Candidate:** If a player crosses the final cell, should they win or stay where they are?
+
+**Interviewer:** The player should land exactly on the final cell.
+
+**Candidate:** Then I will follow the exact landing rule. If the move crosses the final cell, the player will not move.
+
+**Candidate:** If a player rolls a `6`, should they get another turn?
+
+**Interviewer:** Yes, add that rule.
+
+**Candidate:** I will place the player back at the front of the turn queue when they roll `6`.
+
+**Candidate:** The problem mentions normal, crooked, and biased dice. Should dice behavior be changeable?
+
+**Interviewer:** Yes, the game should support different dice behavior.
+
+**Candidate:** I will use a roll strategy interface. `NormalRollStrategy`, `CrookedRollStrategy`, and `BiasedRollStrategy` can implement it.
+
+**Candidate:** Should all players use the same dice, or can each player have a different rolling behavior?
+
+**Interviewer:** What would you choose?
+
+**Candidate:** I will keep roll strategy at the player level. That lets one player be normal and another player be biased or cheating. If the game needs one shared dice later, we can use the `Dice` model inside `Game`.
+
+**Candidate:** If a ladder ends on another snake or ladder start, should we keep resolving jumps?
+
+**Interviewer:** Keep it simple. Resolve only one jump per move.
+
+**Candidate:** Perfect. I will document that chained jumps are not supported in this version.
+
 ## Features
 
 - Configurable board size. Default board size is 100.
