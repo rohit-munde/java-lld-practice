@@ -3,12 +3,13 @@ package models;
 import enums.GameStatus;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Queue;
 
 public class Game {
     private final Board board;
     private GameStatus status;
-    private final ArrayDeque<Player> players;
+    private final Deque<Player> players;
     private Player winner;
 
     public Game(Board board, Queue<Player> players) {
