@@ -11,6 +11,9 @@ public class ParkingService {
    public static Ticket ParkVehicle(Vehicle vehicle, ParkingLot parkingLot) {
        ParkingSpot availableSpot = SpotAllocationService.FindAvailableSpot(vehicle, parkingLot);
        synchronized (availableSpot) {
+           if(!availableSpot.isAvailable()) {
+               throw new RuntimeException("Parking spot is not available");
+           }
            availableSpot.setVehicle(vehicle);
            availableSpot.setAvailable(false);
             return TicketService.GenerateTicket(vehicle, availableSpot);

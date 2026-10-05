@@ -34,7 +34,9 @@ public class SnakeAndLadder {
         System.out.println(game);
 
         game.start();
+
         Player winner = game.getWinner();
+
         while (winner == null) {
             game.playTurn();
             winner = game.getWinner();
