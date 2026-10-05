@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Game {
     private final Board board;
     private GameStatus status;
-    private final Queue<Player> players;
+    private final ArrayDeque<Player> players;
     private Player winner;
 
     public Game(Board board, Queue<Player> players) {
@@ -63,7 +63,12 @@ public class Game {
 
         if (nextPosition > board.getSize()) {
             System.out.println("Invalid Position, Player Cannot Move");
-            players.offer(player);
+            if(diceValue == 6) {
+                players.offerFirst(player);
+            } else {
+                players.offer(player);
+            }
+
             return;
         }
 
@@ -78,7 +83,11 @@ public class Game {
             return;
         }
 
-        players.offer(player);
+        if (diceValue == 6) {
+            players.offerFirst(player);
+        } else {
+            players.offer(player);
+        }
     }
 
     public Player getWinner() {
