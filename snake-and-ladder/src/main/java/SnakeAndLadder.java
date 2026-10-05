@@ -4,7 +4,7 @@ import strategy.CheatingStrategy;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-public class Main {
+public class SnakeAndLadder {
     public static void main(String[] args) {
         System.out.println("Snake and Ladder Game initialized.");
 

@@ -90,7 +90,7 @@ models/       Board, Cell, Game, Player, Jump, Snake, Ladder, Dice
 strategy/     NormalRollStrategy, BiasedRollStrategy, CrookedRollStrategy, CheatingStrategy
 interfaces/   IRollStrategy
 enums/        GameStatus
-Main.java     Console runner
+SnakeAndLadder.java     Console runner
 ```
 
 ## Design
@@ -106,7 +106,6 @@ classDiagram
         -Player winner
         +start()
         +playTurn()
-        +addPlayer(Player)
         +getWinner() Player
     }
 

@@ -23,12 +23,6 @@ public class Game {
         this.status = GameStatus.NOT_STARTED;
     }
 
-    public void addPlayer(Player player) {
-        if (player != null) {
-            this.players.offer(player);
-        }
-    }
-
     public void start() {
         if (status != GameStatus.NOT_STARTED) {
             throw new IllegalStateException("Game has already started.");
