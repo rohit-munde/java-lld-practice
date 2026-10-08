@@ -1,20 +1,27 @@
 package com.lld.bookmyshow.model;
 
 import java.util.Set;
+import java.util.HashSet;
 
 public class Theatre {
-    private final Long id;
+    private final Integer id;
     private String name;
     private Set<Screen> screens;
     private City city;
 
-    public Theatre(Long id, String name, City city) {
+    public Theatre(Integer id, String name, City city) {
         this.id = id;
         this.name = name;
         this.city = city;
+        this.screens = new HashSet<>();
     }
 
-    public Long getId() {
+    public Theatre(Integer id) {
+        this.id = id;
+        this.screens = new HashSet<>();
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -36,5 +43,16 @@ public class Theatre {
 
     public void setScreens(Set<Screen> screens) {
         this.screens = screens;
+    }
+
+    public void addScreen(Screen screen) {
+        screens.add(screen);
+    }
+
+    public Theatre getTheatreById(Integer id) {
+        if (this.id.equals(id)) {
+            return this;
+        }
+        return null;
     }
 }
