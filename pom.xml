@@ -17,6 +17,7 @@
         <module>smart-parking-lot</module>
         <module>snake-and-ladder</module>
         <module>book-my-show</module>
+        <module>splitwise</module>
     </modules>
 
     <properties>
