@@ -1,6 +1,5 @@
 package com.lld.splitwise.controllers;
 
-import com.lld.splitwise.models.Expense;
 import com.lld.splitwise.models.Group;
 import com.lld.splitwise.models.User;
 

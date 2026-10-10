@@ -1,5 +1,6 @@
 package com.lld.splitwise.models;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class UserExpenseBalanceSheet {
@@ -8,6 +9,14 @@ public class UserExpenseBalanceSheet {
     private double totalPayment;
     private double totalYouOwe;
     private double totalYouGet;
+
+    public UserExpenseBalanceSheet() {
+        this.userBalance = new HashMap<>();
+        this.totalYourExpense = 0;
+        this.totalPayment = 0;
+        this.totalYouOwe = 0;
+        this.totalYouGet = 0;
+    }
 
     public UserExpenseBalanceSheet(Map<String, Balance> userBalance, double totalYourExpense, double totalPayment, double totalYouOwe, double totalYouGet) {
         this.userBalance = userBalance;

@@ -5,10 +5,10 @@ public class User {
     private String name;
     private UserExpenseBalanceSheet balanceSheet;
 
-    public User(Integer id, String name, UserExpenseBalanceSheet balanceSheet) {
+    public User(Integer id, String name) {
         this.id = id;
         this.name = name;
-        this.balanceSheet = balanceSheet;
+        this.balanceSheet = new UserExpenseBalanceSheet();
     }
 
     public Integer getId() {

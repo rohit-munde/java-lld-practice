@@ -45,11 +45,11 @@ public class SplitWiseDemo {
     private List<Split> setUpSplits() {
         List<Split> splits = new ArrayList<>();
 
-        Split split1 = new Split(userController.getUserById(1), 100.0);
-        Split split2 = new Split(userController.getUserById(2), 200.0);
-        Split split3 = new Split(userController.getUserById(3), 300.0);
-        Split split4 = new Split(userController.getUserById(4), 400.0);
-        Split split5 = new Split(userController.getUserById(5), 500.0);
+        Split split1 = new Split(userController.getUserById(1), 180.0);
+        Split split2 = new Split(userController.getUserById(2), 180.0);
+        Split split3 = new Split(userController.getUserById(3), 180.0);
+        Split split4 = new Split(userController.getUserById(4), 180.0);
+        Split split5 = new Split(userController.getUserById(5), 180.0);
         splits.add(split1);
         splits.add(split2);
         splits.add(split3);
@@ -69,11 +69,11 @@ public class SplitWiseDemo {
     }
 
     private void addUsersToApp(){
-        User user1 = new User(1, "User 1", null);
-        User user2 = new User(2, "User 2", null);
-        User user3 = new User(3, "User 3", null);
-        User user4 = new User(4, "User 4", null);
-        User user5 = new User(5, "User 5", null);
+        User user1 = new User(1, "User 1");
+        User user2 = new User(2, "User 2");
+        User user3 = new User(3, "User 3");
+        User user4 = new User(4, "User 4");
+        User user5 = new User(5, "User 5");
 
         userController.addUser(user1);
         userController.addUser(user2);
